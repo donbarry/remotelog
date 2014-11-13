@@ -7,6 +7,7 @@
         .config(function($locationProvider){ $locationProvider.html5Mode(true).hashPrefix('!');})
         .config(function($logProvider,ilstuRemoteLoggingProvider){
             $logProvider.debugEnabled(true);
+            ilstuRemoteLoggingProvider.$get();
         })
         .run(
         function($log,ilstuRemoteLogging){
