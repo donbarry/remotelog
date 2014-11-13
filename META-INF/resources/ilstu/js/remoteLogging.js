@@ -75,8 +75,8 @@
 
 		function providerGetFn($injector) {
 
-            $provide.decorator('$log', ['$delegatee',
-                function ($delegate) {
+            $provide.decorator('$log', ['$injector','$delegate',
+                function ($injector,$delegate) {
                     var swap = function (originalFn) {
                         return function () {
                             console.log("begin fxn sqap");
@@ -85,7 +85,7 @@
                                 //endpointWriter.writeLn(value);
                                 $injector.get('$http')({
                                     method: 'GET',
-                                    url: 'http://localhost/weather/testdecorators/index.php?debug='+message
+                                    url: 'http://localhost:4040/remotelog/index.php?debug='+"message"
                                     //data: {debug: "message"}
                                 }).success(function (response) {
                                     console.log(response);
